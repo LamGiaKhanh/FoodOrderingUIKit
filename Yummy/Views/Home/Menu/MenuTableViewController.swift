@@ -13,6 +13,7 @@ protocol MenuControllerDelegate {
 
 enum SideMenuItem: String, CaseIterable {
     case addNewDish = "Add New Dish"
+    case addNewCategory = "Add New Category"
 }
 
 class MenuTableViewController: UITableViewController {

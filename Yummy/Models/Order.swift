@@ -8,7 +8,10 @@
 import Foundation
 
 struct Order: Decodable {
-    let id: String?
-    let name: String?
-    let dish: Dish?
+    var id: String?
+    var user: String?
+    var detail: OrderDetail?
+    var status: String?
+    var time: String?
+    var total: String?
 }

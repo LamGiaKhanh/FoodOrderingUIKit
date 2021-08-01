@@ -1,31 +1,23 @@
 //
-//  AddNewDishViewController.swift
+//  AddNewCategoryViewController.swift
 //  Yummy
 //
-//  Created by Khánh Lâm Gia on 28/07/2021.
+//  Created by Khánh Lâm Gia on 31/07/2021.
 //
 
 import UIKit
 import ProgressHUD
 
-
-class AddNewDishViewController: UIViewController {
+class AddNewCategoryViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
-    @IBOutlet weak var costTextField: UITextField!
-    @IBOutlet weak var tagTextField: UITextField!
-    @IBOutlet weak var dishImageView: UIImageView!
+    @IBOutlet weak var categoryImageView: UIImageView!
     
-    @IBOutlet weak var scrollView: UIScrollView!
     var imagePicker = UIImagePickerController()
     let firebase = FirebaseManager()
-
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         // Do any additional setup after loading the view.
     }
@@ -38,49 +30,42 @@ class AddNewDishViewController: UIViewController {
         present(vc, animated: true)
     }
     
-    @IBAction func addDishBtnClicked(_ sender: UIButton) {
-        addDish()
-
-    }
     
-    private func addDish() {
+    @IBAction func addCategoryBtnClicked(_ sender: UIButton) {
+        addCategory()
+    }
+    private func addCategory() {
         ProgressHUD.show()
-        if let image = dishImageView.image, nameTextField.text != "" {
+        if let image = categoryImageView.image, nameTextField.text != "" {
             let id = firebase.randomString(length: Firebase.idLength)
-            let newDish = Dish(id: id, name: nameTextField.text, description: descriptionTextField.text, cost: costTextField.text, tag: tagTextField.text)
-            firebase.uploadDish(dish: newDish, image: image) { (error) in
+            let newCategory = DishCategory(id: id, name: nameTextField.text)
+            firebase.uploadCategory(category: newCategory, image: image) { error in
                 if error == nil {
-                    ProgressHUD.showSuccess("Your dish has been added")
+                    ProgressHUD.showSuccess("New category has been added")
                     self.clearData()
                 }
                 else {
                     print(error?.localizedDescription)
                 }
-                
-
             }
-            
         }
         
     }
+    
     func clearData() {
         nameTextField.text = ""
-        descriptionTextField.text = ""
-        costTextField.text = ""
-        tagTextField.text = ""
-        dishImageView.image = #imageLiteral(resourceName: "emptyImage")
-
+        categoryImageView.image = UIImage()
     }
-    
-    
+   
 
 }
 
-extension AddNewDishViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+extension AddNewCategoryViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-            dishImageView.image = image
+            categoryImageView.image = image
             picker.dismiss(animated: true, completion: nil)
         }
     }

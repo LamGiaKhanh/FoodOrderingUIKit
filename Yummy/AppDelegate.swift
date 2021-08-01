@@ -16,7 +16,8 @@ import SideMenu
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var hud = JGProgressHUD(style: .light)
-
+    var sharedOrderDetail : OrderDetail?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)

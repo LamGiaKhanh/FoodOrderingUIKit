@@ -18,10 +18,10 @@ class DishPortraitCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLbl: UILabel!
     
     func setup(dish: Dish) {
-        titleLbl.text = dish.name
-        dishImageView.kf.setImage(with: dish.image?.asUrl)
-        costLbl.text = dish.formattedVND()
-        descriptionLbl.text = dish.description
+        titleLbl?.text = dish.name
+        dishImageView?.kf.setImage(with: dish.image?.asUrl)
+        costLbl?.text = dish.formattedVND()
+        descriptionLbl?.text = dish.description
     }
 
 }

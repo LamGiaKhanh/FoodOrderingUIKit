@@ -8,24 +8,39 @@
 import UIKit
 import Kingfisher
 
-class DishListTableViewCell: UITableViewCell {
+protocol DishListTableViewCellDelegate {
+    func didAddedItem(item: Dish)
+}
 
-    static let identifier = String(describing: DishListTableViewCell.self)
+class DishListTableViewCell: UITableViewCell {
     
+    var delegate: DishListTableViewCellDelegate?
+    static let identifier = String(describing: DishListTableViewCell.self)
+    var added = false { didSet
+    {
+        addButton.isHidden = added
+    }
+        
+    }
+    var currentDish: Dish!
     @IBOutlet weak var dishImageView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var descriptionLbl: UILabel!
     
     func setup(dish: Dish) {
         dishImageView.kf.setImage(with: dish.image?.asUrl)
         titleLbl.text = dish.name
-        descriptionLbl.text = dish.description
+        descriptionLbl.text = dish.formattedVND()
     }
     
     func setup(order: Order) {
-        
-        dishImageView.kf.setImage(with: order.dish?.image?.asUrl)
-        titleLbl.text = order.dish?.name
-        descriptionLbl.text = order.dish?.description
+//        dishImageView.kf.setImage(with: order.detail?.image?.asUrl)
+//        titleLbl.text = order.dish?.name
+//        descriptionLbl.text = order.dish?.description
+    }
+    @IBAction func addButtonClicked(_ sender: UIButton) {
+        let selectedDish = Dish(name: currentDish.name, image: currentDish.image, cost: currentDish.cost)
+        delegate?.didAddedItem(item: selectedDish)
     }
 }

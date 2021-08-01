@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+
+struct DishCategory: Decodable {
+    var id: String?
+    var name: String?
+    var image: String?
+
+}

@@ -33,28 +33,41 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SEl-0r-uxg">
-                                <rect key="frame" x="82" y="16" width="267" height="50"/>
+                                <rect key="frame" x="82" y="16" width="233" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdT-iz-xCa">
-                                        <rect key="frame" x="0.0" y="0.0" width="267" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="233" height="25"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3h-In-0Qm">
-                                        <rect key="frame" x="0.0" y="25" width="267" height="25"/>
+                                        <rect key="frame" x="0.0" y="25" width="233" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t99-48-bwB">
+                                <rect key="frame" x="321" y="21" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="01h-CQ-hQe"/>
+                                    <constraint firstAttribute="height" constant="40" id="q0a-DW-MOI"/>
+                                </constraints>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="addButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="isI-x4-XKs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SEl-0r-uxg" firstAttribute="leading" secondItem="4rz-0o-sLc" secondAttribute="trailing" constant="16" id="KSn-7U-FyD"/>
+                            <constraint firstItem="t99-48-bwB" firstAttribute="centerY" secondItem="4rz-0o-sLc" secondAttribute="centerY" id="O3Y-kv-wSg"/>
                             <constraint firstItem="4rz-0o-sLc" firstAttribute="top" secondItem="l8C-nx-sbv" secondAttribute="top" constant="16" id="WSK-BP-E83"/>
-                            <constraint firstAttribute="trailing" secondItem="SEl-0r-uxg" secondAttribute="trailing" constant="16" id="chd-jh-MGx"/>
+                            <constraint firstAttribute="trailing" secondItem="t99-48-bwB" secondAttribute="trailing" constant="4" id="XGX-EP-sYY"/>
+                            <constraint firstAttribute="trailing" secondItem="SEl-0r-uxg" secondAttribute="trailing" constant="50" id="chd-jh-MGx"/>
                             <constraint firstItem="4rz-0o-sLc" firstAttribute="leading" secondItem="l8C-nx-sbv" secondAttribute="leading" constant="16" id="dzf-XN-16g"/>
                             <constraint firstAttribute="bottom" secondItem="4rz-0o-sLc" secondAttribute="bottom" constant="16" id="rKa-x0-bjj"/>
                             <constraint firstItem="SEl-0r-uxg" firstAttribute="bottom" secondItem="4rz-0o-sLc" secondAttribute="bottom" id="s3s-2Z-fDH"/>
@@ -73,6 +86,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="addButton" destination="t99-48-bwB" id="btv-Jg-tGn"/>
                 <outlet property="descriptionLbl" destination="w3h-In-0Qm" id="USS-B3-kH9"/>
                 <outlet property="dishImageView" destination="4rz-0o-sLc" id="fdm-96-Cgl"/>
                 <outlet property="titleLbl" destination="AdT-iz-xCa" id="Tjz-C8-x1e"/>
@@ -81,6 +95,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
